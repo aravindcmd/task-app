@@ -16,7 +16,7 @@ const auth = async(req,res,next)=>{
         next()
 
     }catch(e){
-        res.status(401).send({error:'wabba laba dub dub'})
+        res.status(401).send({error:'Authentication failed'})
     }
     //next()
 }
