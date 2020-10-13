@@ -17,6 +17,26 @@ MongoClient.connect(connectionUrl,{useNewUrlParser: true},(error,client)=>{
         return console.log('unable to connect to the database')
     }
   const db= client.db(databaseName)
+
+//   db.collection('users').insertMany([
+//     {
+//         name : 'jen',
+//         age: 27
+
+//     },
+//     {
+//         name: 'carlos',
+//         age:25
+//     },{
+//         name:'rachel',
+//         age:30
+
+//     }
+//   ]).then((result)=>{
+//       console.log(result)
+//   }).catch((error)=>{
+//       console.log(error)
+//   })
 //   db.collection('users').findOne({_id:new ObjectID('5f6c3cdfcf1dd13b305b4e58')},(error,user)=>{
 //      if(error){
 //          return console.log(error)
@@ -41,14 +61,55 @@ MongoClient.connect(connectionUrl,{useNewUrlParser: true},(error,client)=>{
 //     console.log(task)
 
 //   })
-    db.collection('tasks').find({completed:true}).toArray((error,task)=>{
-        if(error)
-        {
-            return console.log('unable to print')
-        }
-        console.log(task)
-    })
+    // db.collection('tasks').find({completed:true}).toArray((error,task)=>{
+    //     if(error)
+    //     {
+    //         return console.log('unable to print')
+    //     }
+    //     console.log(task)
+    // })
 
-      
+    // db.collection('user').updateMany({
+    //     _id:ObjectID("5f6a2f0cc291f02240c01f95")
+    // },{
+    //     $inc:{
+    //         age: 3
+    //     }
+    // }).then((result)=>{
+    //     console.log(result)
+
+    // }).catch((error)=>{
+    //     console.log(error)
+
+    // })
+    
+    // db.collection('tasks').updateMany({
+    //     completed:false
+    // },{
+    //     $set:{
+    //         completed:true
+    //     }
+    // }).then((result)=>{
+    //     console.log(result)
+    // }).catch((error)=>{
+    //     console.log(error)
+    // })
+
+    db.collection('users').deleteMany({
+        age:27
+    }).then((result)=>{
+        console.log(result)
+    }).catch((error)=>{
+        console.log(error)
+    })
+    
+
+    db.collection('tasks').deleteOne({
+        task3: 'email check'
+    }).then((result)=>{
+        console.log(result)
+    }).catch((error)=>{
+        console.log(error)
+    })
 })
 
